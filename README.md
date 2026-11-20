@@ -2,6 +2,10 @@
 
 B 站 AI 内容，每周日 23:00（北京时间）出一期：五个分区各取前 4，头版是全场综合第一，保留最近三周。
 
+## 访问地址
+- 国内直连（推荐）：https://whale-chan-weekly.surge.sh/
+- GitHub Pages（国内常被墙，作备份）：https://dwrgtxdy.github.io/whale-chan-weekly/
+
 ## 分区
 模型新货 / 工具与玩法 / 教程与实战 / 生图与生视频 / 翻车与争议
 
