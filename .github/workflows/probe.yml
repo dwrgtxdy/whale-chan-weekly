@@ -1,0 +1,16 @@
+name: site-probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl pages
+        run: |
+          url="https://dwrgtxdy.github.io/whale-chan-weekly/"
+          echo "HEAD:"; curl -sSI -m 20 "$url" | head -8
+          echo "BODY:"; curl -sS -m 20 "$url" | head -c 600
+          echo
+          echo "IMG:"; curl -sSI -m 20 "https://i0.hdslb.com/bfs/archive/9fcc6eceedfc760b3476f4a41ba66a0b94cf9857.jpg" | head -5
