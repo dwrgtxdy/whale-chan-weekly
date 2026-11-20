@@ -1,3 +1,5 @@
 .secrets/
 _shot*.png
 node_modules/
+probe.tmp.yml
+CON

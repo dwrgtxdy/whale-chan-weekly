@@ -10,6 +10,7 @@ const CSS = await readFile(p('scripts/lib/style.css'), 'utf8')
 const n = v => { v = Number(v || 0); return v >= 1e8 ? (v / 1e8).toFixed(1) + '亿' : v >= 1e4 ? (v / 1e4).toFixed(1) + '万' : String(v) }
 const dur = s => { s = Math.round(Number(s || 0)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60; return (h ? h + ':' + String(m).padStart(2, '0') : String(m)) + ':' + String(ss).padStart(2, '0') }
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+const pic = u => { let t = String(u || ''); if (!t) return ''; if (t.indexOf('//') === 0) t = 'https:' + t; return t.replace(/^http:\/\//i, 'https://') }
 const wk = w => { const a = w.split('-W'); return a[0] + ' 年第 ' + Number(a[1]) + ' 周' }
 const secOf = id => SECTIONS.find(s => s.id === id) || { name: id, tagline: '', color: '#2f6ee0', bg: '#eaf4ff' }
 
@@ -17,7 +18,7 @@ function itemCard(v) {
   const sec = secOf(v.section)
   const say = v.comment ? '<div class="say"><b>鲸鱼娘</b>' + esc(v.comment) + '</div>' : ''
   return '<a class="card item" href="https://www.bilibili.com/video/' + esc(v.bvid) + '" target="_blank" rel="noopener">'
-    + '<div class="thumb"><img src="' + esc(v.pic || '') + '" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="dur">' + dur(v.duration) + '</span></div>'
+    + '<div class="thumb"><img src="' + esc(pic(v.pic)) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="dur">' + dur(v.duration) + '</span><span class="bili">去B站 ↗</span></div>'
     + '<div class="txt"><h4>' + esc(v.title) + '</h4>'
     + '<div class="stats"><span>UP ' + esc(v.author || '') + '</span><span>·</span><span>播放 ' + n(v.view) + '</span><span>·</span><span>弹幕 ' + n(v.danmaku) + '</span></div>'
     + say + '</div></a>'
@@ -26,7 +27,7 @@ function itemCard(v) {
 function headlineCard(v) {
   const sec = secOf(v.section)
   return '<a class="card headline" href="https://www.bilibili.com/video/' + esc(v.bvid) + '" target="_blank" rel="noopener">'
-    + '<div class="cover"><img src="' + esc(v.pic || '') + '" alt="" referrerpolicy="no-referrer"></div>'
+    + '<div class="cover"><img src="' + esc(pic(v.pic)) + '" alt="" referrerpolicy="no-referrer" onerror="this.remove()"><span class="bili big">去B站看正片 ↗</span></div>'
     + '<div class="body"><span class="badge">头版 · 本周综合第一</span>'
     + '<span class="badge alt" style="margin-left:6px;background:' + sec.bg + ';color:' + sec.color + '">' + esc(sec.name) + '</span>'
     + '<h2>' + esc(v.title) + '</h2>'

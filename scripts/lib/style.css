@@ -25,7 +25,10 @@ h1{font-size:44px;margin:10px 0 6px;letter-spacing:-.02em}
 .nav a{padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px}
 .nav a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .nav a:hover{border-color:var(--sky)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 24px rgba(22,50,79,.06)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 24px rgba(22,50,79,.06);transition:transform .18s ease,box-shadow .18s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(22,50,79,.14)}
+.bili{position:absolute;left:8px;top:8px;background:#ff5a4e;color:#fff;font-size:11px;padding:3px 8px;border-radius:999px;box-shadow:0 2px 8px rgba(255,90,78,.35)}
+.bili.big{left:12px;top:12px;font-size:12px;padding:5px 11px}
 .headline{display:grid;grid-template-columns:1.02fr 1fr;gap:0;margin:26px 0 10px;overflow:hidden}
 .headline .cover{position:relative;min-height:280px;background:#eaf4ff}
 .headline .cover img{width:100%;height:100%;object-fit:cover;display:block}
