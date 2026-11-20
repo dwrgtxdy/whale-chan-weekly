@@ -3,3 +3,4 @@ _shot*.png
 node_modules/
 probe.tmp.yml
 CON
+docs/CNAME
