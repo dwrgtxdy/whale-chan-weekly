@@ -38,6 +38,15 @@ jobs:
             git pull --rebase --autostash origin main && git push && break
             echo "push retry $i"; sleep 6
           done
+      - name: 发布到 surge.sh 国内镜像
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          if [ -z "$SURGE_TOKEN" ]; then echo "skip: no surge token"; exit 0; fi
+          npm i -g surge --loglevel=error
+          surge ./docs whale-chan-weekly.surge.sh
+          rm -f docs/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
