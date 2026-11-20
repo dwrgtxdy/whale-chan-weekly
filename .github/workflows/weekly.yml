@@ -1,0 +1,45 @@
+name: weekly-report
+on:
+  schedule:
+    - cron: '0 15 * * 0'      # 周日 23:00 Asia/Shanghai
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: weekly-report
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 生成周报数据（含鲸鱼娘点评）
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: node scripts/weekly.mjs
+      - name: 渲染站点
+        run: node scripts/render.mjs
+      - name: 提交数据与页面
+        run: |
+          git config user.name "whale-chan-bot"
+          git config user.email "whale-chan-bot@users.noreply.github.com"
+          git add data/weekly docs
+          if git diff --cached --quiet; then echo "no changes"; else git commit -m "weekly: $(date -u +%F)"; git push; fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

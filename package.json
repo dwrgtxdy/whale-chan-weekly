@@ -1,0 +1,17 @@
+{
+  "name": "whale-chan-weekly",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "鲸鱼娘快报 · B站 AI 内容周报（GitHub Actions 驱动，零依赖）",
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "weekly": "node scripts/weekly.mjs",
+    "render": "node scripts/render.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
