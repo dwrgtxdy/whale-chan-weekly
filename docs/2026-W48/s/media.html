@@ -1,0 +1,82 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>鲸鱼娘快报 · 生图与生视频</title><style>:root{
+  --ink:#16324f; --ink2:#3d5a78; --blue:#2f6ee0; --sky:#9fd8ff; --cream:#fffdf8;
+  --coral:#ff5a4e; --yellow:#ffd400; --line:#d6e6f5; --card:#ffffff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  color:var(--ink);background:linear-gradient(180deg,#e8f4ff 0%,#f6fbff 320px,#fffdf8 100%);}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 64px}
+.topbar{background:var(--ink);color:#dbeafe;font-size:12px;letter-spacing:.08em}
+.topbar .wrap{display:flex;justify-content:space-between;padding:8px 20px}
+.topbar a{color:#9fd8ff}
+.hero{position:relative;overflow:hidden;border-radius:0 0 28px 28px;background:radial-gradient(120% 140% at 78% 20%,#bfe6ff 0%,#e8f4ff 45%,#f7fbff 100%);
+  border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding-top:34px;padding-bottom:26px}
+.brand{font-size:13px;letter-spacing:.28em;color:var(--blue);font-weight:700}
+h1{font-size:44px;margin:10px 0 6px;letter-spacing:-.02em}
+.sub{color:var(--ink2);font-size:15px;margin-bottom:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12px;color:var(--ink2);box-shadow:0 1px 0 rgba(22,50,79,.04)}
+.chip b{color:var(--blue)}
+.hero-art{position:relative;height:100%;min-height:236px;display:flex;align-items:flex-end;justify-content:center}
+.hero-art img{width:100%;height:100%;object-fit:contain;object-position:center bottom;border-radius:18px 18px 0 0;mix-blend-mode:multiply}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 8px}
+.nav a{padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px}
+.nav a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.nav a:hover{border-color:var(--sky)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 24px rgba(22,50,79,.06);transition:transform .18s ease,box-shadow .18s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(22,50,79,.14)}
+.bili{position:absolute;left:8px;top:8px;background:#ff5a4e;color:#fff;font-size:11px;padding:3px 8px;border-radius:999px;box-shadow:0 2px 8px rgba(255,90,78,.35)}
+.bili.big{left:12px;top:12px;font-size:12px;padding:5px 11px}
+.headline{display:grid;grid-template-columns:1.02fr 1fr;gap:0;margin:26px 0 10px;overflow:hidden}
+.headline .cover{position:relative;min-height:280px;background:#eaf4ff}
+.headline .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.headline .body{padding:24px 26px}
+.badge{display:inline-block;background:var(--yellow);color:#5a3d00;font-weight:700;font-size:12px;padding:3px 10px;border-radius:6px;letter-spacing:.06em}
+.badge.alt{background:#eaf4ff;color:var(--blue)}
+.headline h2{font-size:30px;line-height:1.28;margin:12px 0 8px}
+.meta{font-size:13px;color:#7d93aa;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.meta .dot{width:3px;height:3px;background:#c3d6e8;border-radius:50%}
+.verdict{margin-top:14px;border-left:4px solid var(--coral);background:#fff7f6;border-radius:0 10px 10px 0;padding:10px 14px;font-size:14px;line-height:1.65}
+.verdict .who{font-weight:700;color:var(--coral);margin-right:6px}
+.score{margin-left:auto;font-weight:800;color:var(--blue);font-size:15px}
+section.sec{margin-top:38px}
+.sec-head{display:flex;align-items:flex-end;gap:12px;margin-bottom:12px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head h3{font-size:22px;margin:0}
+.sec-head .tag{font-size:13px;color:#7d93aa;padding-bottom:2px}
+.sec-head .more{margin-left:auto;font-size:13px;color:var(--blue);padding-bottom:3px}
+.sec-sum{font-size:14px;color:var(--ink2);line-height:1.7;margin:0 0 14px;padding:12px 16px;background:#f3f9ff;border-radius:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.item{overflow:hidden;display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease}
+.item:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(22,50,79,.12)}
+.item .thumb{position:relative;aspect-ratio:16/10;background:#eaf4ff}
+.item .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.item .dur{position:absolute;right:8px;bottom:8px;background:rgba(10,24,40,.78);color:#fff;font-size:11px;padding:2px 6px;border-radius:4px}
+.item .txt{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.item h4{font-size:15px;line-height:1.45;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:43px}
+.item .stats{font-size:12px;color:#7d93aa;display:flex;gap:8px;flex-wrap:wrap}
+.item .say{font-size:13px;color:var(--ink2);line-height:1.6;border-top:1px dashed var(--line);padding-top:8px;margin-top:auto}
+.item .say b{color:var(--coral);margin-right:4px}
+.weeks{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0}
+.weeks a{font-size:13px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.weeks a:hover{border-color:var(--sky)}
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:#8ea6bb;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+footer .me{display:flex;align-items:center;gap:8px}
+footer img{width:26px;height:26px;border-radius:50%;object-fit:cover;background:#eaf4ff}
+.mascot-note{display:flex;gap:14px;align-items:center;margin-top:26px;background:#fff;border:1px dashed #b9d7f0;border-radius:16px;padding:14px 18px}
+.mascot-note img{width:82px;height:82px;object-fit:contain;mix-blend-mode:multiply}
+.mascot-note p{margin:0;font-size:13px;color:var(--ink2);line-height:1.7}
+.mascot-note b{color:var(--ink)}
+.hist{margin-top:30px}
+.hist h3{font-size:18px;margin:0 0 10px}
+.hist .row{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.hist .row .k{color:#7d93aa;width:88px;flex:none}
+.hist .row a:hover{color:var(--blue)}
+@media(max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-art{min-height:150px;order:-1}
+  h1{font-size:34px}
+  .headline{grid-template-columns:1fr}
+  .headline .cover{min-height:200px;max-height:240px}
+}</style></head><body><div class="topbar"><div class="wrap"><span>深海养殖基地 · 每周投喂 · 不卖鱼只卖眼光</span><a href="../../index.html">最新一期 →</a></div></div><header class="hero"><div class="wrap"><div><div class="brand">REEF OBSERVATORY · 深海观测站</div><h1>生图与生视频</h1><div class="sub">画得像不像、动得对不对，看成品说话｜2026 年第 48 周 前 4 名</div><div class="chips"><span class="chip">2026 年第 48 周</span><span class="chip">候选 <b>318 条</b></span><span class="chip">本期进榜 <b>4 条</b></span><span class="chip">历史 <b>最近 3 周</b></span></div></div><div class="hero-art"><img src="../../assets/wc-hero.webp" alt="鲸鱼娘"></div></div></header><div class="wrap"><nav class="nav"><a href="../../index.html" class="">首页</a><a href="../../s/models.html" class="">模型新货</a><a href="../../s/tools.html" class="">工具与玩法</a><a href="../../s/tutorial.html" class="">教程与实战</a><a href="../../s/media.html" class="on">生图与生视频</a><a href="../../s/drama.html" class="">翻车与争议</a></nav><p class="sec-sum" style="margin-top:22px">主人，这周生图生视频区像一锅刚焖好的米饭——有料但火候不一。PS转AI的实操最扎实，DSH接MiniMax算小菜但有新意；那两条超长教程饭量太大，萌新容易噎着。整体看，能动手的比光喊口号的香，显存小的也能尝口肉。摸鱼品鉴完毕，主人挑顺眼的投喂时间吧。</p><div class="grid"><a class="card item" href="https://www.bilibili.com/video/BV1VpyWzDEdP" target="_blank" rel="noopener"><div class="thumb"><img src="https://i0.hdslb.com/bfs/archive/00c50cc7b3017f108cb61268885ab87833523602.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="dur">12:14</span><span class="bili">去B站 ↗</span></div><div class="txt"><h4>还在学PS？AI生图新玩法大赏，10分钟教你成为顶级设计师！</h4><div class="stats"><span>UP GenJi是真想教会你</span><span>·</span><span>播放 5.2万</span><span>·</span><span>弹幕 240</span></div><div class="say"><b>鲸鱼娘</b>七个案例如同七碗饭，实打实能扒进嘴。改图防崩和拆图层最下饭，比空谈AI强。</div></div></a><a class="card item" href="https://www.bilibili.com/video/BV1m4sU6LEr9" target="_blank" rel="noopener"><div class="thumb"><img src="https://i0.hdslb.com/bfs/archive/0f5a9e353acd0946a401f9b4c340f1fe835e23dc.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="dur">1:41</span><span class="bili">去B站 ↗</span></div><div class="txt"><h4>DSH也能生图了！</h4><div class="stats"><span>UP 夜与星尘_NaSd</span><span>·</span><span>播放 3112</span><span>·</span><span>弹幕 1</span></div><div class="say"><b>鲸鱼娘</b>两分钟给大肥鱼接生图，像偷吃一口白米饭——量少但尝到鲜。仓库地址才是真投喂。</div></div></a><a class="card item" href="https://www.bilibili.com/video/BV1CEypzeEkJ" target="_blank" rel="noopener"><div class="thumb"><img src="https://i1.hdslb.com/bfs/archive/f60d2b69c722880b04fc846244cfe6dc9ad4835d.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="dur">2:38:39</span><span class="bili">去B站 ↗</span></div><div class="txt"><h4>【ComfyUI全教程】目前B站最全最细的《Comfyui》零基础入门教程，手把手教你用ComfyUI玩60S视频+2K画质+图生图+图生视频+全能参考模式</h4><div class="stats"><span>UP ComfyUI安装教学</span><span>·</span><span>播放 1014</span><span>·</span><span>弹幕 11</span></div><div class="say"><b>鲸鱼娘</b>159分钟教程像整锅饭端上来，管饱但没给勺子。零基础看完能动手，才算真喂到嘴。</div></div></a><a class="card item" href="https://www.bilibili.com/video/BV1FZs16tE8Y" target="_blank" rel="noopener"><div class="thumb"><img src="https://i1.hdslb.com/bfs/archive/7a95ef3a5689e1c7d23c40ce76c38b86151b7041.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="dur">51:32</span><span class="bili">去B站 ↗</span></div><div class="txt"><h4>MOSS+Krea2全能生图的王！4G显存也能生成MJ质感风格大片的效果，AI圈开源的邪修教程，出文生图+图生图+布局控图+改图工作流详解，萌新胎教级喂饭级教学</h4><div class="stats"><span>UP ComfyUI教学教程t</span><span>·</span><span>播放 1387</span><span>·</span><span>弹幕 0</span></div><div class="say"><b>鲸鱼娘</b>4G显存能跑出这效果，算捡到宝。标题喊得凶，但工作流拆得细，萌新能跟着扒两口。</div></div></a></div><div class="hist"><h3>2026 年第 47 周</h3><p class="sec-sum">生图这周很安静，安静得可疑：两条教程、一条「DSH 也能生图了」的小惊喜。真动起来的东西不多，但方向对——门槛在往下掉。</p><div class="row"><span class="k">100 分</span><a href="https://www.bilibili.com/video/BV1VpyWzDEdP" target="_blank" rel="noopener">还在学PS？AI生图新玩法大赏，10分钟教你成为顶级设计师！</a></div><div class="row"><span class="k">92 分</span><a href="https://www.bilibili.com/video/BV1m4sU6LEr9" target="_blank" rel="noopener">DSH也能生图了！</a></div><div class="row"><span class="k">88 分</span><a href="https://www.bilibili.com/video/BV1CEypzeEkJ" target="_blank" rel="noopener">【ComfyUI全教程】目前B站最全最细的《Comfyui》零基础入门教程，手把手教你用ComfyUI玩60S视频+2K画质+图生图+图生视频+全能参考模式</a></div><div class="row"><span class="k">84 分</span><a href="https://www.bilibili.com/video/BV1FZs16tE8Y" target="_blank" rel="noopener">MOSS+Krea2全能生图的王！4G显存也能生成MJ质感风格大片的效果，AI圈开源的邪修教程，出文生图+图生图+布局控图+改图工作流详解，萌新胎教级喂饭级教学</a></div></div><div class="mascot-note"><img src="../../assets/wc-lazy.png" alt=""><p><b>她在碗里待机。</b>这期评论如果哪条写得敷衍，就是饭没吃饱——下周日 23:00 她再来一次。内容只做转述与索引，原片请去 B 站看。</p></div><footer><span class="me"><img src="../../assets/wc-avatar.png" alt="">鲸鱼娘快报 · 2026 年第 48 周 · 内容来自哔哩哔哩，仅作转述与索引</span><span>评分：播放3 点赞1 收藏2 转发2 弹幕评论2 · 百分位加权</span></footer></div></body></html>
