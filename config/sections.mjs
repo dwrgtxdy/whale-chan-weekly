@@ -55,3 +55,7 @@ export const TOP_N = 4
 export const HISTORY_WEEKS = 3
 export const WINDOW_DAYS = 7
 export const MIN_DURATION = 60
+
+// 播放量门槛：每个分区优先只收 ≥ 10 万的作品；不够 TOP_N 条时用该区播放最高的补足（MIN_VIEW 可覆盖）
+export const MIN_VIEW = Number(process.env.MIN_VIEW || 100000)
+

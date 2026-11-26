@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, readdir, stat } from 'node:fs/promises'
-import { SECTIONS, TOP_N, WINDOW_DAYS } from '../config/sections.mjs'
+import { SECTIONS, TOP_N, WINDOW_DAYS, MIN_VIEW } from '../config/sections.mjs'
 import { scorePool } from './lib/score.mjs'
+import { pickWithFloor } from './lib/pick.mjs'
 import { copySection, copyHeadline } from './lib/ai.mjs'
 import { pickSection, isAI, sameTopic } from './lib/classify.mjs'
 
@@ -86,10 +87,10 @@ async function main() {
   for (const sec of SECTIONS) {
     const pool = items.filter(v => v.section === sec.id)
     const scored = scorePool(pool).sort((a, b) => b.score - a.score || b.view - a.view)
-    const top = scored.slice(0, TOP_N)
+    const top = pickWithFloor(scored, { topN: TOP_N, minView: MIN_VIEW })
     const copy = await copySection(sec, top)
     sections[sec.id] = { id: sec.id, name: sec.name, summary: copy.summary, items: top.map(v => ({ ...v, comment: copy.comments[v.bvid] || '' })) }
-    globalPool.push(...scored)
+    globalPool.push(...top)
   }
 
   const head = scorePool(globalPool).sort((a, b) => b.score - a.score || b.view - a.view)[0]
@@ -102,6 +103,7 @@ async function main() {
     anchorDate: anchor.toISOString().slice(0, 10),
     generatedAt: new Date().toISOString(),
     windowDays: WINDOW_DAYS,
+    minView: MIN_VIEW,
     candidates: items.length,
     headline: { ...head, comment: headComment },
     sections,

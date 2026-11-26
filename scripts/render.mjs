@@ -20,7 +20,7 @@ function itemCard(v) {
   return '<a class="card item" href="https://www.bilibili.com/video/' + esc(v.bvid) + '" target="_blank" rel="noopener">'
     + '<div class="thumb"><img src="' + esc(pic(v.pic)) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="dur">' + dur(v.duration) + '</span><span class="bili">去B站 ↗</span></div>'
     + '<div class="txt"><h4>' + esc(v.title) + '</h4>'
-    + '<div class="stats"><span>UP ' + esc(v.author || '') + '</span><span>·</span><span>播放 ' + n(v.view) + '</span><span>·</span><span>弹幕 ' + n(v.danmaku) + '</span></div>'
+    + '<div class="stats"><span>UP ' + esc(v.author || '') + '</span><span>·</span><span>播放 ' + n(v.view) + '</span><span>·</span><span>弹幕 ' + n(v.danmaku) + '</span>' + (v.belowFloor ? '<span class="fill">补位</span>' : '') + '</div>'
     + say + '</div></a>'
 }
 
